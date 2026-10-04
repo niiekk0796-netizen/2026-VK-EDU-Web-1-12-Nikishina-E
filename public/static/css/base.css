@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  font-family: Roboto;
+  font-weight: 350;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.header {
+  margin-bottom: 15px;
+}
+
+.header_list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: Inter, Roboto;
+  font-weight: Bold;
+  font-size: 40px;
+}
+
+.search_ask {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.ask {
+  transition: transform 0.35s ease;
+}
+
+.ask:hover {
+  text-decoration: underline;
+
+}
+
+.search {
+  padding: 6px 30px;
+  border-radius: 9px;
+  border: 1px solid #000;
+  outline: none;
+  width: 300px;
+}
+
+
+.btn {
+  font-family: Inter, Roboto;
+  padding: 6px 25px;
+  
+}
+
+.log_out {
+  transition: transform 0.55s ease;
+}
+
+.log_out:hover {
+  text-decoration: underline;
+}
+
+.sign_up {
+  border-radius: 9px;
+  border: 1.3px solid #000;
+  transition: background-color 0.65s ease; 
+}
+
+.sign_up:hover {
+  background-color: #ffcc5c;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user_col {
+  flex-direction: column;
+}
+
+.user_row {
+  display: flex;
+  gap: 10px;
+}
+
+.content {
+  display: flex;
+  gap: 35px;
+  flex: 1;
+}
+
+.main {
+  width: 75%;
+}
+
+.sidebar {
+  width: 25%;
+}
+
+.sidebar h2 {
+  text-align: center;
+}
+
+.popular_tags {
+  height: 45%;
+
+}
+
+.best_members {
+  height: 55%;
+}
+
+
+
