@@ -1,0 +1,12 @@
+<form method="post" class="form-panel answer-form" data-demo-form>
+    {% csrf_token %}
+    <h2>Write an answer</h2>
+<div class="mb-3">
+      <label for="field-answer" class="form-label">Your answer</label>
+      <textarea class="form-control" id="field-answer" name="answer" maxlength="5000" required aria-describedby="field-answer-help" rows="5"></textarea>
+      <div id="field-answer-help" class="form-text">Up to 5,000 characters.</div>
+    </div>
+    <button class="btn primary-button" type="submit">Post answer</button>
+
+    {% include "includes/form_status.html" %}
+  </form>

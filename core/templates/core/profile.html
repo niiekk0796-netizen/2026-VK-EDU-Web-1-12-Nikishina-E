@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Profile settings{% endblock %}
+
+{% block content %}
+  {% include "includes/page_heading.html" with title="Profile settings" kicker="Your account" intro="Update your public name, email address, and avatar." only %}
+  <form method="post" enctype="multipart/form-data" class="form-panel" data-demo-form>
+    {% csrf_token %}
+    <div class="avatar-preview"><img class="avatar" src="{% static 'img/profile.svg' %}" alt="" width="52" height="52"></div>
+<div class="mb-3">
+      <label for="field-email" class="form-label">Email</label>
+      <input class="form-control" id="field-email" name="email" maxlength="254" required value="alex@example.com" autocomplete="email" type="email">
+    </div>
+<div class="mb-3">
+      <label for="field-nickname" class="form-label">Nickname</label>
+      <input class="form-control" id="field-nickname" name="nickname" maxlength="40" required value="Alex" aria-describedby="field-nickname-help" autocomplete="nickname" type="text">
+      <div id="field-nickname-help" class="form-text">Your public name, up to 40 characters.</div>
+    </div>
+<div class="mb-3">
+      <label for="field-avatar" class="form-label">Avatar</label>
+      <input class="form-control" id="field-avatar" name="avatar" aria-describedby="field-avatar-help" accept="image/png,image/jpeg,image/webp" type="file">
+      <div id="field-avatar-help" class="form-text">Optional. Choose a PNG, JPEG, or WebP image.</div>
+    </div>
+    <button class="btn primary-button" type="submit">Save changes</button>
+
+    {% include "includes/form_status.html" %}
+  </form>
+{% endblock %}

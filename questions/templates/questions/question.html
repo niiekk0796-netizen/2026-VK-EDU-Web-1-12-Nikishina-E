@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{ question.title }}{% endblock %}
+
+{% block content %}
+  {% include "questions/includes/question_card.html" with question=question detail=True only %}
+  <h2 class="answers-heading" id="answers">{{ question.answer_count }} answer{{ question.answer_count|pluralize }}</h2>
+  {% for answer in page %}
+    {% include "questions/includes/answer_card.html" with answer=answer only %}
+  {% empty %}
+    <p>No answers yet.</p>
+  {% endfor %}
+  {% include "includes/pagination.html" with anchor="#answers" %}
+  {% include "questions/includes/answer_form.html" %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% block heading %}{% endblock %}
+  <nav class="feed-tabs" aria-label="Question feeds">
+    <a href="{% url 'questions:index' %}"{% if request.resolver_match.url_name == 'index' %} aria-current="page"{% endif %}>Newest</a>
+    <a href="{% url 'questions:hot' %}"{% if request.resolver_match.url_name == 'hot' %} aria-current="page"{% endif %}>Hot questions</a>
+  </nav>
+  {% for question in page %}
+    {% include "questions/includes/question_card.html" with question=question only %}
+  {% empty %}
+    <p class="alert alert-light">No questions match your search.</p>
+  {% endfor %}
+  {% include "includes/pagination.html" %}
+{% endblock %}

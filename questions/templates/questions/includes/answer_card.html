@@ -1,0 +1,15 @@
+<article class="post-card">
+  {% include "questions/includes/post_rail.html" with post=answer only %}
+  <div class="post-body">
+    <p>{{ answer.text }}</p>
+    <div class="post-meta">
+      <span>{{ answer.author }}</span>
+      <time datetime="{{ answer.created|date:'Y-m-d' }}">{{ answer.created|date:"M j, Y" }}</time>
+      {% if answer.accepted %}
+        <span class="accepted accepted-yes">✓ Accepted answer</span>
+      {% else %}
+        <span class="accepted accepted-no">Not accepted</span>
+      {% endif %}
+    </div>
+  </div>
+</article>

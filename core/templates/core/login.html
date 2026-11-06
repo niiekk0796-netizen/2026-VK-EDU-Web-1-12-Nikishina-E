@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+  {% include "includes/page_heading.html" with title="Log in" kicker="Your account" intro="Sign in to join the discussion." only %}
+  <form method="post" class="form-panel" data-demo-form>
+    {% csrf_token %}
+    <p class="alert alert-danger" role="alert">Example error: The email or password is incorrect.</p>
+<div class="mb-3">
+      <label for="field-email" class="form-label">Email</label>
+      <input class="form-control" id="field-email" name="email" maxlength="254" required autocomplete="email" type="email">
+    </div>
+<div class="mb-3">
+      <label for="field-password" class="form-label">Password</label>
+      <input class="form-control" id="field-password" name="password" maxlength="128" required autocomplete="current-password" type="password">
+    </div>
+    <button class="btn primary-button" type="submit">Log in</button>
+    <p class="mt-3 mb-0">New here? <a href="{% url 'core:signup' %}">Create an account</a>.</p>
+    {% include "includes/form_status.html" %}
+  </form>
+{% endblock %}

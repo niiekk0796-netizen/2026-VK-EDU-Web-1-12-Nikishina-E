@@ -1,0 +1,25 @@
+{% load static %}
+<header class="site-header">
+    <div class="container header">
+      <div class="header_list">
+        <a href="{% url 'questions:index' %}" class="logo"><img src="{% static 'img/favicon.svg' %}" alt="" width="32" height="32">Message.Me</a>
+        <div class="search_ask">
+          <form action="{% url 'questions:index' %}" method="get" role="search" class="search-form">
+            <label class="visually-hidden" for="site-search">Search questions</label>
+            <input type="search" id="site-search" name="q" value="{{ search_query|default_if_none:'' }}" class="search" placeholder="Search questions…" maxlength="100">
+          </form>
+          <a href="{% url 'questions:ask' %}" class="btn ask">Ask</a>
+        </div>
+        <nav class="user" aria-label="Account">
+          {% if demo_member %}
+            <img class="avatar header-avatar" src="{% static 'img/profile.svg' %}" alt="" width="52" height="52">
+            <a href="{% url 'core:profile' %}" class="btn header-name">{{ demo_member }}</a>
+            <a href="{% url 'questions:index' %}" class="btn log_out">Log out</a>
+          {% else %}
+            <a href="{% url 'core:login' %}" class="btn log_out">Log In</a>
+            <a href="{% url 'core:signup' %}" class="btn sign_up">Sign Up Now</a>
+          {% endif %}
+        </nav>
+      </div>
+    </div>
+  </header>

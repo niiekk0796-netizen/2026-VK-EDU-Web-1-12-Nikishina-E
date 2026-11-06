@@ -1,0 +1,17 @@
+{% url 'questions:question' question.id as question_url %}
+<article class="post-card">
+  {% include "questions/includes/post_rail.html" with post=question only %}
+  <div class="post-body">
+    {% if detail %}
+      <h1>{{ question.title }}</h1>
+    {% else %}
+      <h2><a class="post-title" href="{{ question_url }}">{{ question.title }}</a></h2>
+    {% endif %}
+    <p class="post-text">{{ question.text }}</p>
+    <div class="post-meta">
+      <a href="{% if not detail %}{{ question_url }}{% endif %}#answers">{{ question.answer_count }} answer{{ question.answer_count|pluralize }}</a>
+      <time datetime="{{ question.created|date:'Y-m-d' }}">{{ question.created|date:"M j, Y" }}</time>
+      {% include "questions/includes/tags.html" with tags=question.tags only %}
+    </div>
+  </div>
+</article>
