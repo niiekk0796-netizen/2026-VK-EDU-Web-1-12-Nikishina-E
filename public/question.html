@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>How do I paginate a Django queryset? · Message.Me</title>
+  <title>How to build a moon park? · Message.Me</title>
   <link rel="icon" href="static/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="static/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/css/reset.css">
@@ -17,153 +17,131 @@
   <header class="site-header">
     <div class="container header">
       <div class="header_list">
-        <a href="index.html" class="logo"><img src="static/img/favicon.svg" alt="" width="32" height="32">Message.Me</a>
+        <a href="index.html" class="logo">Message.Me</a>
         <div class="search_ask">
           <form action="index.html" method="get" role="search" class="search-form">
-            <label class="visually-hidden" for="site-search">Search questions</label>
-            <input type="search" id="site-search" name="q" class="search" placeholder="Search questions…" maxlength="100">
+            <label class="visually-hidden" for="site-search">Search</label>
+            <input type="search" id="site-search" name="q" class="search" placeholder="Search" maxlength="100">
           </form>
-          <a href="ask.html" class="btn ask">Ask</a>
+          <a href="ask.html" class="btn ask">ASK!</a>
         </div>
         <nav class="user" aria-label="Account">
-          <a href="login.html" class="btn log_out">Log In</a>
-          <a href="signup.html" class="btn sign_up">Sign Up Now</a>
+            <a href="login.html">log in</a>
+            <a href="signup.html">register</a>
         </nav>
       </div>
     </div>
   </header>
   <div class="container content">
     <main class="main" id="main">
-      <div id="preview-question"><article class="post-card">
-          <div class="post-rail">
-            <img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52">
-            <div class="votes" role="group" aria-label="Vote">
-            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">+</button>
-            <output class="vote-count" aria-label="Score">18</output>
-            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">−</button>
+      <div id="preview-question"><article class="post-card question-detail">
+        <div class="post-rail">
+          <img class="avatar" src="static/img/profile.svg" alt="" width="44" height="44">
+          <div class="votes" role="group" aria-label="Vote">
+            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">▴</button>
+            <output class="vote-count" aria-label="Score">21</output>
+            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">▾</button>
           </div>
+        </div>
+        <div class="post-body">
+          <h1>How to build a moon park?</h1>
+          <p class="post-text">I’m trying to put together a moon park and have the site picked out. I’m still figuring out what to build first and what can wait until later. Has anyone worked on something similar?</p>
+          <div class="post-meta">
+            <a href="#answers" class="visually-hidden">answer (4)</a>
+            <time class="visually-hidden" datetime="2026-10-31">Oct 31, 2026</time>
+            <div class="tags"><span>Tags:</span> <a class="tag" href="tag.html?tag=django">django</a> <a class="tag" href="tag.html?tag=git">git</a> <a class="tag" href="tag.html?tag=docker">docker</a></div>
           </div>
-          <div class="post-body">
-            <h1>How do I paginate a Django queryset?</h1>
-            <p class="post-text">I’m building a question feed and want to keep the page links readable. How should I handle a missing or invalid page number?</p>
-            <div class="post-meta"><a href="#answers">4 answers</a>
-              <time datetime="2026-10-25">Oct 25, 2026</time>
-              <div class="tags"><a class="tag" href="tag.html?tag=django">django</a> <a class="tag" href="tag.html?tag=python">python</a></div></div>
-          </div>
-        </article></div>
-      <h2 class="answers-heading" id="answers">4 answers</h2>
-      <div data-preview-list="2">
+        </div>
+      </article></div>
+      <div id="answers" data-preview-list="2">
         <article class="post-card">
-          <div class="post-rail">
-            <img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52">
-            <div class="votes" role="group" aria-label="Vote">
-            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">+</button>
+        <div class="post-rail">
+          <img class="avatar" src="static/img/profile.svg" alt="" width="44" height="44">
+          <div class="votes" role="group" aria-label="Vote">
+            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">▴</button>
             <output class="vote-count" aria-label="Score">8</output>
-            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">−</button>
+            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">▾</button>
           </div>
-          </div>
-          <div class="post-body">
-
-            <p class="post-text">Use Django’s Paginator to split your queryset into pages. Catch PageNotAnInteger and EmptyPage, then return the first page when the value is invalid.</p>
-            <div class="post-meta"><span>Alex</span>
-              <time datetime="2026-11-01">Nov 1, 2026</time>
-              <span class="accepted accepted-yes">✓ Accepted answer</span></div>
-          </div>
-        </article>
+        </div>
+        <div class="post-body">
+          <p>Start with a small example. Set up the basic layout and check that each part works before adding the rest.</p>
+          <div class="post-meta"><label class="accepted"><input type="checkbox" disabled checked> Correct!</label></div>
+        </div>
+      </article>
         <article class="post-card">
-          <div class="post-rail">
-            <img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52">
-            <div class="votes" role="group" aria-label="Vote">
-            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">+</button>
+        <div class="post-rail">
+          <img class="avatar" src="static/img/profile.svg" alt="" width="44" height="44">
+          <div class="votes" role="group" aria-label="Vote">
+            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">▴</button>
             <output class="vote-count" aria-label="Score">4</output>
-            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">−</button>
+            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">▾</button>
           </div>
-          </div>
-          <div class="post-body">
-
-            <p class="post-text">Give the queryset a stable ordering before paginating. Otherwise records can shift between pages when their order is undefined.</p>
-            <div class="post-meta"><span>Nina</span>
-              <time datetime="2026-11-02">Nov 2, 2026</time>
-              <span class="accepted accepted-no">Not accepted</span></div>
-          </div>
-        </article>
+        </div>
+        <div class="post-body">
+          <p>Put the shared pieces in a separate file. It is easier to change them once than to update every page.</p>
+          <div class="post-meta"><label class="accepted"><input type="checkbox" disabled> Correct!</label></div>
+        </div>
+      </article>
         <article class="post-card">
-          <div class="post-rail">
-            <img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52">
-            <div class="votes" role="group" aria-label="Vote">
-            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">+</button>
+        <div class="post-rail">
+          <img class="avatar" src="static/img/profile.svg" alt="" width="44" height="44">
+          <div class="votes" role="group" aria-label="Vote">
+            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">▴</button>
             <output class="vote-count" aria-label="Score">2</output>
-            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">−</button>
+            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">▾</button>
           </div>
-          </div>
-          <div class="post-body">
-
-            <p class="post-text">Use the query string for the page number and keep existing filters when you build the pagination links.</p>
-            <div class="post-meta"><span>Sam</span>
-              <time datetime="2026-11-03">Nov 3, 2026</time>
-              <span class="accepted accepted-no">Not accepted</span></div>
-          </div>
-        </article>
+        </div>
+        <div class="post-body">
+          <p>Check the page on a narrow screen before adjusting the spacing.</p>
+          <div class="post-meta"><label class="accepted"><input type="checkbox" disabled> Correct!</label></div>
+        </div>
+      </article>
         <article class="post-card">
-          <div class="post-rail">
-            <img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52">
-            <div class="votes" role="group" aria-label="Vote">
-            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">+</button>
+        <div class="post-rail">
+          <img class="avatar" src="static/img/profile.svg" alt="" width="44" height="44">
+          <div class="votes" role="group" aria-label="Vote">
+            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">▴</button>
             <output class="vote-count" aria-label="Score">1</output>
-            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">−</button>
+            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">▾</button>
           </div>
-          </div>
-          <div class="post-body">
-
-            <p class="post-text">Check the first and last pages, along with an empty list, so you can handle every edge of the list.</p>
-            <div class="post-meta"><span>Taylor</span>
-              <time datetime="2026-11-04">Nov 4, 2026</time>
-              <span class="accepted accepted-no">Not accepted</span></div>
-          </div>
-        </article>
+        </div>
+        <div class="post-body">
+          <p>Keep a copy of your working version before changing the layout.</p>
+          <div class="post-meta"><label class="accepted"><input type="checkbox" disabled> Correct!</label></div>
+        </div>
+      </article>
       </div>
+      <form method="post" class="form-panel answer-form" data-demo-form>
+          <label for="field-answer" class="visually-hidden">Your answer</label>
+          <textarea class="form-control" id="field-answer" name="answer" maxlength="5000" required rows="3" placeholder="Enter your answer here.."></textarea>
+          <button class="btn primary-button" type="submit">Answer</button>
+          <p class="form-status" data-form-status role="status" hidden></p>
+        </form>
       <nav aria-label="Pages">
         <ul class="pagination">
           <li class="page-item active"><a class="page-link" aria-current="page" href="?page=1">1</a></li>
           <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
         </ul>
       </nav>
-      <form method="post" class="form-panel answer-form" data-demo-form>
-        <h2>Write an answer</h2>
-<div class="mb-3">
-          <label for="field-answer" class="form-label">Your answer</label>
-          <textarea class="form-control" id="field-answer" name="answer" maxlength="5000" required aria-describedby="field-answer-help" rows="5"></textarea>
-          <div id="field-answer-help" class="form-text">Up to 5,000 characters.</div>
-        </div>
-        <button class="btn primary-button" type="submit">Post answer</button>
-
-        <p class="alert alert-info mt-3 mb-0" data-form-status role="status" hidden></p>
-      </form>
-      <script type="application/json" id="preview-questions">[["How do I paginate a Django queryset?","I’m building a question feed and want to keep the page links readable. How should I handle a missing or invalid page number?",["django","python"],18,0],["How can I keep a footer at the bottom of the viewport?","On pages with only a short form, the footer sits halfway up the screen. Is there a simple layout that lets it move down as content grows?",["css","bootstrap"],12,1],["How do I share a header between Django templates?","The question feed and account pages share the same navigation. I’d like to keep that markup in one place.",["django","html"],7,-1],["How do I preserve a search term during pagination?","I can filter the results with a search form, but clicking the next page clears the search.",["django","python"],9,0],["When should I use flexbox or grid?","My layout has a card with an avatar, a score, and a block of text. Which tool fits that layout best?",["css","html"],15,0],["How do I show an error under a Bootstrap form field?","I want to show a validation message beside the field and make it readable by a screen reader.",["bootstrap","html"],5,0],["Where should Django look for static files?","I’m using app templates and a shared styles folder. Which settings control the files served in development?",["django","css"],21,0]]</script>
+      <script type="application/json" id="preview-questions">[["How do I paginate a Django queryset?","I need to split the questions into pages. How do I handle invalid page numbers?",["django","python"],18,0],["How do I keep the footer at the bottom?","On short pages my footer sits under the form. How can I move it down?",["css","bootstrap"],12,1],["How do I share a header between templates?","My pages use the same header. Where should I put it?",["django","html"],7,-1],["How do I keep a search query between pages?","The next page link clears my search.",["django","python"],9,0],["When should I use flexbox or grid?","I have an avatar next to a block of text. Which layout fits better?",["css","html"],15,0],["How do I show a form error?","I want to put a validation message below a Bootstrap field.",["bootstrap","javascript"],5,0],["How to build a moon park?","Guys, I have trouble with a moon park. Can’t find the pieces…",["django","git","docker"],21,0]]</script>
     </main>
     <aside class="sidebar" aria-label="Community">
-      <section class="sidebar-section popular_tags">
+      <section class="popular_tags">
         <h2>Popular Tags</h2>
-        <div class="tags">
-          <a class="tag" href="tag.html?tag=django">django</a>
-<a class="tag" href="tag.html?tag=python">python</a>
-<a class="tag" href="tag.html?tag=html">html</a>
-<a class="tag" href="tag.html?tag=css">css</a>
-<a class="tag" href="tag.html?tag=bootstrap">bootstrap</a>
-<a class="tag" href="tag.html?tag=javascript">javascript</a>
-        </div>
+        <div class="tags"><a class="tag" href="tag.html?tag=django">django</a> <a class="tag" href="tag.html?tag=python">python</a> <a class="tag" href="tag.html?tag=html">html</a> <a class="tag" href="tag.html?tag=css">css</a> <a class="tag" href="tag.html?tag=bootstrap">bootstrap</a> <a class="tag" href="tag.html?tag=javascript">javascript</a> <a class="tag" href="tag.html?tag=git">git</a> <a class="tag" href="tag.html?tag=docker">docker</a></div>
       </section>
-      <section class="sidebar-section best_members">
+      <section class="best_members">
         <h2>Best Members</h2>
         <ul class="member-list">
-          <li><img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52"> Alex Morgan</li>
-<li><img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52"> Nina Chen</li>
-<li><img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52"> Sam Rivera</li>
-<li><img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52"> Taylor Brooks</li>
+          <li>Mr. Freeman</li>
+          <li>Dr. House</li>
+          <li>Bender</li>
+          <li>Queen Victoria</li>
+          <li>V. Pupkin</li>
         </ul>
       </section>
     </aside>
   </div>
-  <footer class="container footer"><small>Message.Me · Community questions and answers</small></footer>
+  <footer class="container footer"></footer>
 </body>
 </html>

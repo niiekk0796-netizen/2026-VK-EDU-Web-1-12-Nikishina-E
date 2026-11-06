@@ -3,7 +3,7 @@ const questionData = document.getElementById("preview-questions");
 if (questionData) {
   const questions = JSON.parse(questionData.textContent);
   const id = Number(new URLSearchParams(location.search).get("id"));
-  if (Number.isInteger(id) && id > 1 && id <= questions.length) {
+  if (Number.isInteger(id) && id >= 1 && id < questions.length) {
     const [title, text, tags, score, vote] = questions[id - 1];
     const question = document.getElementById("preview-question");
     question.querySelector("h1").textContent = title;
@@ -17,7 +17,7 @@ if (questionData) {
     time.dateTime = "2026-10-" + day;
     time.textContent = "Oct " + day + ", 2026";
     const tagLinks = question.querySelector(".tags");
-    tagLinks.replaceChildren(...tags.map((tag) => {
+    tagLinks.replaceChildren(tagLinks.firstElementChild, ...tags.map((tag) => {
       const link = document.createElement("a");
       link.className = "tag";
       link.href = "tag.html?tag=" + encodeURIComponent(tag);
@@ -32,7 +32,7 @@ const list = document.querySelector("[data-preview-list]");
 
 if (list) {
   const parameters = new URLSearchParams(location.search);
-  const tag = parameters.get("tag");
+  const tag = parameters.get("tag") || list.dataset.defaultTag;
   const query = parameters.get("q")?.trim().toLowerCase();
   const posts = [...list.querySelectorAll(".post-card")];
   const visible = posts.filter((post) =>
@@ -60,7 +60,7 @@ if (list) {
     const link = document.createElement("a");
     link.className = "page-link";
     parameters.set("page", number);
-    link.href = "?" + parameters.toString();
+    link.href = "?" + parameters.toString() + (list.id === "answers" ? "#answers" : "");
     link.textContent = number;
     if (number === page) {
       item.classList.add("active");
