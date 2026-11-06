@@ -81,7 +81,7 @@ body {
 .sign_up {
   border-radius: 9px;
   border: 1.3px solid #000;
-  transition: background-color 0.65s ease; 
+  transition: background-color 0.65s ease;
 }
 
 .sign_up:hover {
