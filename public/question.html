@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How do I paginate a Django queryset? · Message.Me</title>
+  <link rel="icon" href="static/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/reset.css">
+  <link rel="stylesheet" href="static/css/base.css">
+  <link rel="stylesheet" href="static/css/pages.css">
+  <script src="static/js/bootstrap.bundle.min.js" defer></script>
+  <script src="static/js/static-preview.js" defer></script>
+  <script src="static/js/demo.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header">
+      <div class="header_list">
+        <a href="index.html" class="logo"><img src="static/img/favicon.svg" alt="" width="32" height="32">Message.Me</a>
+        <div class="search_ask">
+          <form action="index.html" method="get" role="search" class="search-form">
+            <label class="visually-hidden" for="site-search">Search questions</label>
+            <input type="search" id="site-search" name="q" class="search" placeholder="Search questions…" maxlength="100">
+          </form>
+          <a href="ask.html" class="btn ask">Ask</a>
+        </div>
+        <nav class="user" aria-label="Account">
+          <a href="login.html" class="btn log_out">Log In</a>
+          <a href="signup.html" class="btn sign_up">Sign Up Now</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div class="container content">
+    <main class="main" id="main">
+      <div id="preview-question"><article class="post-card">
+          <div class="post-rail">
+            <img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52">
+            <div class="votes" role="group" aria-label="Vote">
+            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">+</button>
+            <output class="vote-count" aria-label="Score">18</output>
+            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">−</button>
+          </div>
+          </div>
+          <div class="post-body">
+            <h1>How do I paginate a Django queryset?</h1>
+            <p class="post-text">I’m building a question feed and want to keep the page links readable. How should I handle a missing or invalid page number?</p>
+            <div class="post-meta"><a href="#answers">4 answers</a>
+              <time datetime="2026-10-25">Oct 25, 2026</time>
+              <div class="tags"><a class="tag" href="tag.html?tag=django">django</a> <a class="tag" href="tag.html?tag=python">python</a></div></div>
+          </div>
+        </article></div>
+      <h2 class="answers-heading" id="answers">4 answers</h2>
+      <div data-preview-list="2">
+        <article class="post-card">
+          <div class="post-rail">
+            <img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52">
+            <div class="votes" role="group" aria-label="Vote">
+            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">+</button>
+            <output class="vote-count" aria-label="Score">8</output>
+            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">−</button>
+          </div>
+          </div>
+          <div class="post-body">
+
+            <p class="post-text">Use Django’s Paginator to split your queryset into pages. Catch PageNotAnInteger and EmptyPage, then return the first page when the value is invalid.</p>
+            <div class="post-meta"><span>Alex</span>
+              <time datetime="2026-11-01">Nov 1, 2026</time>
+              <span class="accepted accepted-yes">✓ Accepted answer</span></div>
+          </div>
+        </article>
+        <article class="post-card">
+          <div class="post-rail">
+            <img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52">
+            <div class="votes" role="group" aria-label="Vote">
+            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">+</button>
+            <output class="vote-count" aria-label="Score">4</output>
+            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">−</button>
+          </div>
+          </div>
+          <div class="post-body">
+
+            <p class="post-text">Give the queryset a stable ordering before paginating. Otherwise records can shift between pages when their order is undefined.</p>
+            <div class="post-meta"><span>Nina</span>
+              <time datetime="2026-11-02">Nov 2, 2026</time>
+              <span class="accepted accepted-no">Not accepted</span></div>
+          </div>
+        </article>
+        <article class="post-card">
+          <div class="post-rail">
+            <img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52">
+            <div class="votes" role="group" aria-label="Vote">
+            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">+</button>
+            <output class="vote-count" aria-label="Score">2</output>
+            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">−</button>
+          </div>
+          </div>
+          <div class="post-body">
+
+            <p class="post-text">Use the query string for the page number and keep existing filters when you build the pagination links.</p>
+            <div class="post-meta"><span>Sam</span>
+              <time datetime="2026-11-03">Nov 3, 2026</time>
+              <span class="accepted accepted-no">Not accepted</span></div>
+          </div>
+        </article>
+        <article class="post-card">
+          <div class="post-rail">
+            <img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52">
+            <div class="votes" role="group" aria-label="Vote">
+            <button type="button" class="vote" data-vote="1" aria-pressed="false" aria-label="Upvote">+</button>
+            <output class="vote-count" aria-label="Score">1</output>
+            <button type="button" class="vote" data-vote="-1" aria-pressed="false" aria-label="Downvote">−</button>
+          </div>
+          </div>
+          <div class="post-body">
+
+            <p class="post-text">Check the first and last pages, along with an empty list, so you can handle every edge of the list.</p>
+            <div class="post-meta"><span>Taylor</span>
+              <time datetime="2026-11-04">Nov 4, 2026</time>
+              <span class="accepted accepted-no">Not accepted</span></div>
+          </div>
+        </article>
+      </div>
+      <nav aria-label="Pages">
+        <ul class="pagination">
+          <li class="page-item active"><a class="page-link" aria-current="page" href="?page=1">1</a></li>
+          <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+        </ul>
+      </nav>
+      <form class="form-panel answer-form" data-demo-form>
+        <h2>Write an answer</h2>
+<div class="mb-3">
+          <label for="field-answer" class="form-label">Your answer</label>
+          <textarea class="form-control" id="field-answer" name="answer" maxlength="5000" required aria-describedby="field-answer-help" rows="5"></textarea>
+          <div id="field-answer-help" class="form-text">Up to 5,000 characters.</div>
+        </div>
+        <button class="btn primary-button" type="submit">Post answer</button>
+
+        <p class="alert alert-info mt-3 mb-0" data-form-status role="status" hidden></p>
+      </form>
+      <script type="application/json" id="preview-questions">[["How do I paginate a Django queryset?","I’m building a question feed and want to keep the page links readable. How should I handle a missing or invalid page number?",["django","python"],18,0],["How can I keep a footer at the bottom of the viewport?","On pages with only a short form, the footer sits halfway up the screen. Is there a simple layout that lets it move down as content grows?",["css","bootstrap"],12,1],["How do I share a header between Django templates?","The question feed and account pages share the same navigation. I’d like to keep that markup in one place.",["django","html"],7,-1],["How do I preserve a search term during pagination?","I can filter the results with a search form, but clicking the next page clears the search.",["django","python"],9,0],["When should I use flexbox or grid?","My layout has a card with an avatar, a score, and a block of text. Which tool fits that layout best?",["css","html"],15,0],["How do I show an error under a Bootstrap form field?","I want to show a validation message beside the field and make it readable by a screen reader.",["bootstrap","html"],5,0],["Where should Django look for static files?","I’m using app templates and a shared styles folder. Which settings control the files served in development?",["django","css"],21,0]]</script>
+    </main>
+    <aside class="sidebar" aria-label="Community">
+      <section class="sidebar-section popular_tags">
+        <h2>Popular Tags</h2>
+        <div class="tags">
+          <a class="tag" href="tag.html?tag=django">django</a>
+<a class="tag" href="tag.html?tag=python">python</a>
+<a class="tag" href="tag.html?tag=html">html</a>
+<a class="tag" href="tag.html?tag=css">css</a>
+<a class="tag" href="tag.html?tag=bootstrap">bootstrap</a>
+<a class="tag" href="tag.html?tag=javascript">javascript</a>
+        </div>
+      </section>
+      <section class="sidebar-section best_members">
+        <h2>Best Members</h2>
+        <ul class="member-list">
+          <li><img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52"> Alex Morgan</li>
+<li><img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52"> Nina Chen</li>
+<li><img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52"> Sam Rivera</li>
+<li><img class="avatar" src="static/img/profile.svg" alt="" width="52" height="52"> Taylor Brooks</li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+  <footer class="container footer"><small>Message.Me · Community questions and answers</small></footer>
+</body>
+</html>

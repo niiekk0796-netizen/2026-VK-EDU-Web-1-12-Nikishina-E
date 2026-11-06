@@ -1,0 +1,154 @@
+:root {
+  --ink: #1f2937;
+  --muted: #546375;
+  --line: #dce2e9;
+  --accent: #ffcc5c;
+  --canvas: #f7f8fa;
+}
+
+body {
+  color: var(--ink);
+  background: var(--canvas);
+}
+
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+.header { margin-bottom: 0; }
+.logo { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); }
+.logo img { width: 32px; height: 32px; }
+.search_ask { flex: 1; max-width: 460px; min-width: 0; }
+.search-form { flex: 1; min-width: 0; }
+.search { background: #fff; border-color: #9aa7b6; }
+.search:focus-visible { outline: 2px solid #805602; outline-offset: 2px; }
+.user { flex-shrink: 0; }
+.user .btn, .ask { font-weight: 600; }
+.sign_up { border-color: var(--ink); }
+.ask, .primary-button {
+  color: #27210f;
+  background-color: var(--accent);
+  border: 1px solid #ad7513;
+  border-radius: 9px;
+  font-weight: 650;
+}
+.ask:hover, .primary-button:hover { background-color: #ffdc8b; color: #27210f; }
+.header-name { font-weight: 650; }
+
+.content { padding-block: 34px 46px; }
+.main { min-width: 0; flex: 3; }
+.sidebar { min-width: 0; flex: 1; }
+.sidebar h2 { text-align: left; font-size: 1.125rem; margin-bottom: 14px; }
+.sidebar-section {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.popular_tags, .best_members { height: auto; }
+.member-list { padding-left: 0; margin: 0; }
+.member-list li { display: flex; align-items: center; gap: 9px; margin-top: 12px; }
+.member-list .avatar { width: 27px; height: 27px; }
+
+.footer { border-top: 1px solid var(--line); color: var(--muted); padding-block: 18px; }
+.eyebrow {
+  color: #76520b;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+.page-heading { margin-bottom: 22px; }
+.page-heading h1 { font-size: clamp(1.85rem, 4vw, 2.65rem); font-weight: 750; margin: 0; }
+.page-heading p:last-child { margin: 8px 0 0; color: var(--muted); }
+.feed-tabs { display: flex; gap: 18px; margin: 0 0 16px; border-bottom: 1px solid var(--line); }
+.feed-tabs a { color: var(--muted); padding: 6px 2px 10px; border-bottom: 3px solid transparent; }
+.feed-tabs a[aria-current="page"] { border-color: #c5830b; color: var(--ink); font-weight: 700; }
+
+.post-card {
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  margin-bottom: 14px;
+}
+.avatar { width: 52px; height: 52px; object-fit: cover; border-radius: 50%; background: #edf1f5; }
+.post-rail { display: grid; justify-items: center; align-content: start; gap: 9px; }
+.post-body { overflow-wrap: anywhere; }
+.post-body h2 { font-size: 1.2rem; margin-bottom: 8px; }
+.post-body h1 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 12px; }
+.post-body h1, .post-body h2, .post-title { color: var(--ink); font-weight: 700; }
+.post-title:hover { color: #805602; text-decoration: underline; }
+.post-body p { margin-bottom: 12px; }
+.post-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 5px 12px; color: var(--muted); font-size: .875rem; }
+.post-meta a { color: #734c05; font-weight: 650; }
+.tags { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.tag { background: #fff1cf; color: #694904; padding: 3px 9px; border-radius: 6px; font-size: .83rem; font-weight: 600; }
+.tag:hover { background: #ffdf94; color: #5b3e00; }
+.votes { display: grid; justify-items: center; gap: 2px; }
+.vote {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 6px;
+  width: 30px;
+  height: 27px;
+  line-height: 1;
+  font-weight: 700;
+}
+.vote:hover { border-color: #9aa7b6; }
+.vote[aria-pressed="true"][data-vote="1"] { background: #d7f4e3; color: #14623a; border-color: #7dc29c; }
+.vote[aria-pressed="true"][data-vote="-1"] { background: #fde6e3; color: #96352b; border-color: #dfa096; }
+.vote-count { font-variant-numeric: tabular-nums; font-weight: 700; }
+.answers-heading { font-size: 1.35rem; margin: 25px 0 14px; }
+.accepted { display: inline-block; padding: 2px 8px; border-radius: 5px; font-size: .8rem; font-weight: 650; }
+.accepted-yes { color: #14623a; background: #d7f4e3; }
+.accepted-no { color: var(--muted); background: #edf1f5; }
+.pagination { padding-left: 0; flex-wrap: wrap; margin: 19px 0; }
+.pagination .page-link { color: #674805; }
+.pagination .active > .page-link { background: #ffda84; border-color: #bc841f; color: #29200c; }
+
+.form-panel { max-width: 640px; padding: clamp(16px, 3vw, 28px); background: #fff; border: 1px solid var(--line); border-radius: 12px; }
+.form-panel .form-label { font-weight: 650; }
+.form-panel .form-text { color: var(--muted); }
+.form-panel .form-control { border-color: #9aa7b6; }
+.form-panel .form-control:focus { border-color: #ad7513; box-shadow: 0 0 0 .2rem #ffcc5c55; }
+.form-panel .form-control.is-invalid { border-color: #b02a37; }
+.form-panel a { color: #734c05; text-decoration: underline; }
+.avatar-preview { margin-bottom: 12px; }
+.avatar-preview img { width: 76px; height: 76px; }
+.answer-form { margin-top: 24px; }
+.answer-form h2 { font-size: 1.3rem; }
+
+@media (max-width: 991px) {
+  .content { gap: 24px; }
+  .sidebar-section { padding: 14px; }
+}
+
+@media (max-width: 767px) {
+  .header_list { flex-wrap: wrap; }
+  .user a { display: inline-flex; }
+  .search_ask { order: 1; flex-basis: 100%; max-width: none; }
+  .content { flex-direction: column; gap: 28px; padding-block: 24px; }
+  .main, .sidebar { width: 100%; }
+  .sidebar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .sidebar-section { margin-bottom: 0; }
+}
+
+@media (max-width: 480px) {
+  .container { padding-inline: 14px; }
+  .logo { font-size: 21px; gap: 5px; }
+  .logo img { width: 23px; height: 23px; }
+  .user { gap: 6px; }
+  .user a { display: inline-flex; }
+  .user .btn { font-size: .8rem; padding-inline: 7px; }
+  .header-avatar { display: none; }
+  .sidebar { grid-template-columns: 1fr; }
+  .post-card { grid-template-columns: 40px minmax(0, 1fr); gap: 12px; padding: 12px; }
+  .post-rail .avatar { width: 38px; height: 38px; }
+}

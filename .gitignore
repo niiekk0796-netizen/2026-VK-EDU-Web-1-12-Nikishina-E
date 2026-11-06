@@ -218,3 +218,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local OS and database files
+.DS_Store
+*.sqlite3
+node_modules/
