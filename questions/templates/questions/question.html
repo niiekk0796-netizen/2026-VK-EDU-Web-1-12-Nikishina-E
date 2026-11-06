@@ -1,4 +1,9 @@
-{% extends "base.html" %}
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block scripts %}
+  <script src="{% static 'questions/js/votes.js' %}" defer></script>
+{% endblock %}
 
 {% block title %}{{ question.title }}{% endblock %}
 
@@ -12,5 +17,5 @@
     {% endfor %}
   </div>
   {% include "questions/includes/answer_form.html" %}
-  {% include "includes/pagination.html" with anchor="#answers" %}
+  {% include "questions/includes/pagination.html" with anchor="#answers" %}
 {% endblock %}

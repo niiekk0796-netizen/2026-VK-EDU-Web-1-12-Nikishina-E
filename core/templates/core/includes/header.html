@@ -12,7 +12,7 @@
       </div>
       <nav class="user" aria-label="Account">
           {% if demo_member %}
-          <img class="avatar header-avatar" src="{% static 'img/profile.svg' %}" alt="" width="36" height="36">
+          <img class="avatar header-avatar" src="{% static 'core/img/profile.svg' %}" alt="" width="36" height="36">
           <div><div class="account-name">{{ demo_member }}</div>
             <div class="account-links"><a href="{% url 'core:profile' %}">settings</a> <a href="{% url 'core:login' %}">log out</a></div>
           </div>

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "core/base.html" %}
 
 {% block title %}New Question{% endblock %}
 
@@ -20,7 +20,7 @@
     </div>
     <div class="form-actions">
       <button class="btn primary-button" type="submit">ASK!</button>
-      {% include "includes/form_status.html" %}
+      {% include "core/includes/form_status.html" %}
     </div>
   </form>
 {% endblock %}

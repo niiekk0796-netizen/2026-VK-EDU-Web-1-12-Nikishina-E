@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "core/base.html" %}
 {% load static %}
 
 {% block title %}Settings: Dr. Pepper{% endblock %}
@@ -21,11 +21,11 @@
     </div>
     <div class="form-row">
       <label for="field-avatar" class="form-label">Upload avatar</label>
-      <div><img class="avatar avatar-preview" src="{% static 'img/profile.svg' %}" alt="" width="72" height="72"><input class="form-control" id="field-avatar" name="avatar" type="file" accept="image/png,image/jpeg,image/webp"></div>
+      <div><img class="avatar avatar-preview" src="{% static 'core/img/profile.svg' %}" alt="" width="72" height="72"><input class="form-control" id="field-avatar" name="avatar" type="file" accept="image/png,image/jpeg,image/webp"></div>
     </div>
     <div class="form-actions">
       <button class="btn primary-button" type="submit">Save</button>
-      {% include "includes/form_status.html" %}
+      {% include "core/includes/form_status.html" %}
     </div>
   </form>
 {% endblock %}

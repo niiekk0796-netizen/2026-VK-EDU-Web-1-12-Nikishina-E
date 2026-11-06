@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "core/base.html" %}
 
 {% block title %}Registration{% endblock %}
 
@@ -33,7 +33,7 @@
     </div>
     <div class="form-actions">
       <button class="btn primary-button" type="submit">Register!</button>
-      {% include "includes/form_status.html" %}
+      {% include "core/includes/form_status.html" %}
     </div>
   </form>
 {% endblock %}

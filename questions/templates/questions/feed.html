@@ -1,4 +1,9 @@
-{% extends "base.html" %}
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block scripts %}
+  <script src="{% static 'questions/js/votes.js' %}" defer></script>
+{% endblock %}
 
 {% block content %}
   {% block heading %}{% endblock %}
@@ -7,5 +12,5 @@
   {% empty %}
     <p>No questions found.</p>
   {% endfor %}
-  {% include "includes/pagination.html" %}
+  {% include "questions/includes/pagination.html" %}
 {% endblock %}

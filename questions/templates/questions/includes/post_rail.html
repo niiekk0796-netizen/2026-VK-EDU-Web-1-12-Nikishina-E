@@ -1,6 +1,6 @@
 {% load static %}
 <div class="post-rail">
-    <img class="avatar" src="{% static 'img/profile.svg' %}" alt="" width="44" height="44">
+    <img class="avatar" src="{% static 'core/img/profile.svg' %}" alt="" width="44" height="44">
     <div class="votes" role="group" aria-label="Vote">
       <button type="button" class="vote" data-vote="1" aria-pressed="{% if post.vote == 1 %}true{% else %}false{% endif %}" aria-label="Upvote">▴</button>
       <output class="vote-count" aria-label="Score">{{ post.score }}</output>

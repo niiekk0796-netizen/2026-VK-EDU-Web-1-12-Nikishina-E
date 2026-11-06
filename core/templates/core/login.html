@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "core/base.html" %}
 
 {% block title %}Log In{% endblock %}
 
@@ -18,7 +18,7 @@
     <div class="form-actions">
       <button class="btn primary-button" type="submit">Log in!</button>
       <a href="{% url 'core:signup' %}">create new account</a>
-      {% include "includes/form_status.html" %}
+      {% include "core/includes/form_status.html" %}
     </div>
   </form>
 {% endblock %}
