@@ -28,7 +28,7 @@ def question_feed(request, template, *, tag=None, by_rating=False):
     else:
         results.sort(key=lambda question: question["created"], reverse=True)
 
-    context = page_context(results, request, per_page=3)
+    context = page_context(results, request, per_page=20)
     context.update(tag=tag, search_query=query, demo_member="Dr. Pepper")
     return render(request, template, context)
 
