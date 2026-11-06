@@ -1,0 +1,26 @@
+{% load static %}
+<header class="site-header">
+  <div class="container header">
+    <div class="header_list">
+      <a href="{% url 'questions:index' %}" class="logo">Message.Me</a>
+      <div class="search_ask">
+        <form action="{% url 'questions:index' %}" method="get" role="search" class="search-form">
+          <label class="visually-hidden" for="site-search">Search</label>
+          <input type="search" id="site-search" name="q" class="search" placeholder="Search" maxlength="100" value="{{ search_query|default_if_none:'' }}">
+        </form>
+        {% if request.resolver_match.namespace != 'core' or demo_member %}<a href="{% url 'questions:ask' %}" class="btn ask">ASK!</a>{% endif %}
+      </div>
+      <nav class="user" aria-label="Account">
+          {% if demo_member %}
+          <img class="avatar header-avatar" src="{% static 'core/img/profile.svg' %}" alt="" width="36" height="36">
+          <div><div class="account-name">{{ demo_member }}</div>
+            <div class="account-links"><a href="{% url 'core:profile' %}">settings</a> <a href="{% url 'core:login' %}">log out</a></div>
+          </div>
+          {% else %}
+          <a href="{% url 'core:login' %}">log in</a>
+          <a href="{% url 'core:signup' %}">register</a>
+          {% endif %}
+      </nav>
+    </div>
+  </div>
+</header>

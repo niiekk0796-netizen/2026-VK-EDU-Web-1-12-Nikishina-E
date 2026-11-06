@@ -1,0 +1,12 @@
+<aside class="sidebar" aria-label="Community">
+  <section class="popular_tags">
+    <h2>Popular Tags</h2>
+    {% include "questions/includes/tags.html" with tags=popular_tags only %}
+  </section>
+  <section class="best_members">
+    <h2>Best Members</h2>
+    <ul class="member-list">
+      {% for member in best_members %}<li>{{ member }}</li>{% endfor %}
+    </ul>
+  </section>
+</aside>

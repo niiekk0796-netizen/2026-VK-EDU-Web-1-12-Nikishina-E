@@ -1,0 +1,39 @@
+{% extends "core/base.html" %}
+
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+  <h1>Registration</h1>
+  <form method="post" enctype="multipart/form-data" class="form-panel" data-demo-form>
+    {% csrf_token %}
+    <p class="form-error" role="alert">Sorry, this email address already registered!</p>
+    <div class="form-row">
+      <label for="field-username" class="form-label">Login</label>
+      <input class="form-control" id="field-username" name="username" type="text" maxlength="40" autocomplete="username" required value="dr_pepper">
+    </div>
+    <div class="form-row">
+      <label for="field-email" class="form-label">Email</label>
+      <input class="form-control" id="field-email" name="email" type="email" maxlength="254" required value="dr.pepper@example.com" autocomplete="email">
+    </div>
+    <div class="form-row">
+      <label for="field-nickname" class="form-label">NickName</label>
+      <input class="form-control" id="field-nickname" name="nickname" type="text" maxlength="40" required value="Dr. Pepper" autocomplete="nickname">
+    </div>
+    <div class="form-row">
+      <label for="field-password" class="form-label">Password</label>
+      <input class="form-control" id="field-password" name="password" type="password" maxlength="128" autocomplete="new-password" required minlength="8">
+    </div>
+    <div class="form-row">
+      <label for="field-confirm_password" class="form-label">Repeat password</label>
+      <input class="form-control" id="field-confirm_password" name="confirm_password" type="password" maxlength="128" autocomplete="new-password" required minlength="8">
+    </div>
+    <div class="form-row">
+      <label for="field-avatar" class="form-label">Upload avatar</label>
+      <input class="form-control" id="field-avatar" name="avatar" type="file" accept="image/png,image/jpeg,image/webp">
+    </div>
+    <div class="form-actions">
+      <button class="btn primary-button" type="submit">Register!</button>
+      {% include "core/includes/form_status.html" %}
+    </div>
+  </form>
+{% endblock %}

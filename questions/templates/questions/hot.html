@@ -1,0 +1,10 @@
+{% extends "questions/feed.html" %}
+
+{% block title %}Hot Questions{% endblock %}
+
+{% block heading %}
+  <div class="feed-heading">
+    <h1>Hot Questions</h1>
+    <a href="{% url 'questions:index' %}">New Questions</a>
+  </div>
+{% endblock %}

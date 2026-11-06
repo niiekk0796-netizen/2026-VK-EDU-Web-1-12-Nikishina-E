@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Settings: Dr. Pepper{% endblock %}
+
+{% block content %}
+  <h1>Settings: Dr. Pepper</h1>
+  <form method="post" enctype="multipart/form-data" class="form-panel" data-demo-form>
+    {% csrf_token %}
+    <div class="form-row">
+      <label for="field-username" class="form-label">Login</label>
+      <input class="form-control" id="field-username" name="username" type="text" maxlength="40" autocomplete="username" required value="dr_pepper">
+    </div>
+    <div class="form-row">
+      <label for="field-email" class="form-label">Email</label>
+      <input class="form-control" id="field-email" name="email" type="email" maxlength="254" required value="dr.pepper@example.com" autocomplete="email">
+    </div>
+    <div class="form-row">
+      <label for="field-nickname" class="form-label">NickName</label>
+      <input class="form-control" id="field-nickname" name="nickname" type="text" maxlength="40" required value="Dr. Pepper" autocomplete="nickname">
+    </div>
+    <div class="form-row">
+      <label for="field-avatar" class="form-label">Upload avatar</label>
+      <div><img class="avatar avatar-preview" src="{% static 'core/img/profile.svg' %}" alt="" width="72" height="72"><input class="form-control" id="field-avatar" name="avatar" type="file" accept="image/png,image/jpeg,image/webp"></div>
+    </div>
+    <div class="form-actions">
+      <button class="btn primary-button" type="submit">Save</button>
+      {% include "core/includes/form_status.html" %}
+    </div>
+  </form>
+{% endblock %}
