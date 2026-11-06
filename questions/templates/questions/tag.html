@@ -3,7 +3,5 @@
 {% block title %}Tag: {{ tag }}{% endblock %}
 
 {% block heading %}
-  {% with title="Tag: "|add:tag %}
-  {% include "includes/page_heading.html" with title=title kicker="Browse by tag" intro="Questions filed under this topic." only %}
-  {% endwith %}
+  <h1>Tag: {{ tag }}</h1>
 {% endblock %}

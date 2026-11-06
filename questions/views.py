@@ -6,6 +6,14 @@ from .data import QUESTIONS, answers_for
 from .pagination import paginate
 
 
+def page_context(objects, request, per_page):
+    page = paginate(objects, request, per_page)
+    return {
+        "page": page,
+        "page_numbers": page.paginator.get_elided_page_range(page.number, on_each_side=2, on_ends=1),
+    }
+
+
 def question_feed(request, template, *, tag=None, by_rating=False):
     query = request.GET.get("q", "").strip()[:100]
     search = query.casefold()
@@ -20,11 +28,9 @@ def question_feed(request, template, *, tag=None, by_rating=False):
     else:
         results.sort(key=lambda question: question["created"], reverse=True)
 
-    return render(
-        request,
-        template,
-        {"page": paginate(results, request, per_page=20), "tag": tag, "search_query": query},
-    )
+    context = page_context(results, request, per_page=3)
+    context.update(tag=tag, search_query=query, demo_member="Dr. Pepper")
+    return render(request, template, context)
 
 
 @require_safe
@@ -48,11 +54,8 @@ def question(request, question_id):
     if post is None:
         raise Http404("Question not found.")
 
-    return render(
-        request,
-        "questions/question.html",
-        {"question": post, "page": paginate(answers_for(post), request, per_page=30)},
-    )
+    context = page_context(answers_for(post), request, per_page=2)
+    return render(request, "questions/question.html", {"question": post, **context})
 
 
 @require_safe

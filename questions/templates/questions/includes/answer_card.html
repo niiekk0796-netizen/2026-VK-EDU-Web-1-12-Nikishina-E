@@ -3,13 +3,9 @@
   <div class="post-body">
     <p>{{ answer.text }}</p>
     <div class="post-meta">
-      <span>{{ answer.author }}</span>
-      <time datetime="{{ answer.created|date:'Y-m-d' }}">{{ answer.created|date:"M j, Y" }}</time>
-      {% if answer.accepted %}
-        <span class="accepted accepted-yes">✓ Accepted answer</span>
-      {% else %}
-        <span class="accepted accepted-no">Not accepted</span>
-      {% endif %}
+      <span class="visually-hidden">{{ answer.author }}</span>
+      <time class="visually-hidden" datetime="{{ answer.created|date:'Y-m-d' }}">{{ answer.created|date:"M j, Y" }}</time>
+      <label class="accepted"><input type="checkbox" disabled{% if answer.accepted %} checked{% endif %}> Correct!</label>
     </div>
   </div>
 </article>

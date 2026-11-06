@@ -14,4 +14,4 @@ def signup(request):
 
 @require_safe
 def profile(request):
-    return render(request, "core/profile.html", {"demo_member": "Alex"})
+    return render(request, "core/profile.html", {"demo_member": "Dr. Pepper"})

@@ -1,4 +1,5 @@
 <div class="tags">
+  {% if show_label %}<span>Tags:</span>{% endif %}
   {% for tag in tags %}
     <a class="tag" href="{% url 'questions:tag' tag %}">{{ tag }}</a>
   {% endfor %}

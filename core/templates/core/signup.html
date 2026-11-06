@@ -1,37 +1,39 @@
 {% extends "base.html" %}
 
-{% block title %}Create an account{% endblock %}
+{% block title %}Registration{% endblock %}
 
 {% block content %}
-  {% include "includes/page_heading.html" with title="Create an account" kicker="Join the community" intro="A few details and you’re ready to ask and answer." only %}
+  <h1>Registration</h1>
   <form method="post" enctype="multipart/form-data" class="form-panel" data-demo-form>
     {% csrf_token %}
-    <div class="mb-3">
+    <p class="form-error" role="alert">Sorry, this email address already registered!</p>
+    <div class="form-row">
+      <label for="field-username" class="form-label">Login</label>
+      <input class="form-control" id="field-username" name="username" type="text" maxlength="40" autocomplete="username" required value="dr_pepper">
+    </div>
+    <div class="form-row">
       <label for="field-email" class="form-label">Email</label>
-      <input class="form-control is-invalid" id="field-email" name="email" maxlength="254" required value="alex@" aria-describedby="field-email-error" aria-invalid="true" autocomplete="email" type="email">
-      <div id="field-email-error" class="invalid-feedback">Enter a valid email address.</div>
+      <input class="form-control" id="field-email" name="email" type="email" maxlength="254" required value="dr.pepper@example.com" autocomplete="email">
     </div>
-<div class="mb-3">
-      <label for="field-nickname" class="form-label">Nickname</label>
-      <input class="form-control" id="field-nickname" name="nickname" maxlength="40" required aria-describedby="field-nickname-help" autocomplete="nickname" type="text">
-      <div id="field-nickname-help" class="form-text">Your public name, up to 40 characters.</div>
+    <div class="form-row">
+      <label for="field-nickname" class="form-label">NickName</label>
+      <input class="form-control" id="field-nickname" name="nickname" type="text" maxlength="40" required value="Dr. Pepper" autocomplete="nickname">
     </div>
-<div class="mb-3">
+    <div class="form-row">
       <label for="field-password" class="form-label">Password</label>
-      <input class="form-control" id="field-password" name="password" minlength="8" maxlength="128" required aria-describedby="field-password-help" autocomplete="new-password" type="password">
-      <div id="field-password-help" class="form-text">Use at least 8 characters.</div>
+      <input class="form-control" id="field-password" name="password" type="password" maxlength="128" autocomplete="new-password" required minlength="8">
     </div>
-<div class="mb-3">
-      <label for="field-confirm_password" class="form-label">Confirm password</label>
-      <input class="form-control" id="field-confirm_password" name="confirm_password" maxlength="128" required autocomplete="new-password" type="password">
+    <div class="form-row">
+      <label for="field-confirm_password" class="form-label">Repeat password</label>
+      <input class="form-control" id="field-confirm_password" name="confirm_password" type="password" maxlength="128" autocomplete="new-password" required minlength="8">
     </div>
-<div class="mb-3">
-      <label for="field-avatar" class="form-label">Avatar</label>
-      <input class="form-control" id="field-avatar" name="avatar" aria-describedby="field-avatar-help" accept="image/png,image/jpeg,image/webp" type="file">
-      <div id="field-avatar-help" class="form-text">Optional. Choose a PNG, JPEG, or WebP image.</div>
+    <div class="form-row">
+      <label for="field-avatar" class="form-label">Upload avatar</label>
+      <input class="form-control" id="field-avatar" name="avatar" type="file" accept="image/png,image/jpeg,image/webp">
     </div>
-    <button class="btn primary-button" type="submit">Create account</button>
-
-    {% include "includes/form_status.html" %}
+    <div class="form-actions">
+      <button class="btn primary-button" type="submit">Register!</button>
+      {% include "includes/form_status.html" %}
+    </div>
   </form>
 {% endblock %}

@@ -17,17 +17,10 @@ document.querySelectorAll(".votes").forEach((widget) => {
 });
 
 document.querySelectorAll("[data-demo-form]").forEach((form) => {
-  form.querySelectorAll(".is-invalid").forEach((input) => {
-    input.addEventListener("input", () => {
-      input.classList.remove("is-invalid");
-      input.removeAttribute("aria-invalid");
-    });
-  });
-
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const status = form.querySelector("[data-form-status]");
-    status.textContent = "This is a preview. Your changes have not been saved.";
+    status.textContent = "Preview only.";
     status.hidden = false;
   });
 });

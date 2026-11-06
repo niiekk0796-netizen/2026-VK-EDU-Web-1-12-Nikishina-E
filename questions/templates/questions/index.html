@@ -1,7 +1,10 @@
 {% extends "questions/feed.html" %}
 
-{% block title %}New questions{% endblock %}
+{% block title %}New Questions{% endblock %}
 
 {% block heading %}
-  {% include "includes/page_heading.html" with title="New questions" kicker="Community Q&A" intro="Find an answer, share what you know, or ask the community." only %}
+  <div class="feed-heading">
+    <h1>New Questions</h1>
+    <a href="{% url 'questions:hot' %}">Hot Questions</a>
+  </div>
 {% endblock %}
