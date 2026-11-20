@@ -5,7 +5,7 @@
     <div class="post-meta">
       <span>{{ answer.author.profile }}</span>
       <time datetime="{{ answer.created|date:'c' }}">{{ answer.created|date:"d.m.Y H:i" }}</time>
-      <label class="accepted"><input type="checkbox"{% if answer.accepted %} checked{% endif %}{% if user.pk != question.author_id %} disabled title="Отметить ответ может автор вопроса"{% endif %}> Correct!</label>
+      <label class="accepted"><input type="checkbox" data-accept-url="{% url 'questions:accept' question.pk %}" data-answer="{{ answer.pk }}"{% if answer.accepted %} checked{% endif %}{% if user.pk != question.author_id %} disabled title="Отметить ответ может автор вопроса"{% endif %}> Correct!</label>
     </div>
   </div>
 </article>
