@@ -17,9 +17,11 @@ ALLOWED_HOSTS = [
 
 ROOT_URLCONF = "application.urls"
 WSGI_APPLICATION = "application.wsgi.application"
-INSTALLED_APPS = ["django.contrib.staticfiles", "core", "questions"]
+INSTALLED_APPS = ["django.contrib.staticfiles", "django.contrib.auth", "django.contrib.contenttypes", "django.contrib.sessions", "core", "questions"]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
 ]
@@ -32,6 +34,7 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
                 "questions.context_processors.community",
             ],
         },
