@@ -1,0 +1,155 @@
+* {
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 350;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 12px 24px;
+  box-sizing: border-box;
+}
+
+.header {
+  margin-bottom: 15px;
+}
+
+.header_list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  font-family: Inter, Roboto, system-ui, sans-serif;
+  font-weight: Bold;
+  font-size: 30px;
+}
+
+.search_ask {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2.5vw, 30px);
+}
+
+.ask {
+  font-size: clamp(14px, 1.3vw, 16px);
+  padding: clamp(4px, 0.5vw, 6px) clamp(10px, 1.5vw, 20px);
+  white-space: nowrap;
+  transition: transform 0.35s ease;
+}
+
+.ask:hover {
+  text-decoration: underline;
+
+}
+
+.search {
+  width: 100%;
+  padding: 6px 30px;
+  border-radius: 9px;
+  border: 1px solid #000;
+  outline: none;
+}
+
+
+.btn {
+  font-family: Inter, Roboto, system-ui, sans-serif;
+  font-size: clamp(14px, 1.3vw, 16px);
+  padding: clamp(4px, 0.6vw, 6px) clamp(10px, 2vw, 25px);
+  white-space: nowrap;
+}
+
+
+.log_out {
+  transition: transform 0.55s ease;
+}
+
+.log_out:hover {
+  text-decoration: underline;
+}
+
+.sign_up {
+  border-radius: 9px;
+  border: 1.3px solid #000;
+  transition: background-color 0.65s ease;
+}
+
+.sign_up:hover {
+  background-color: #ffcc5c;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-button {
+  display: none;
+}
+
+.content {
+  display: flex;
+  gap: 35px;
+  flex: 1;
+}
+
+.main {
+  width: 75%;
+}
+
+.sidebar {
+  width: 25%;
+}
+
+.sidebar h2 {
+  text-align: center;
+}
+
+.popular_tags {
+  height: 45%;
+
+}
+
+.best_members {
+  height: 55%;
+}
+
+
+@media (min-width: 560px) and (max-width: 1200px) {
+  .logo {
+    font-size: clamp(25px, calc(12.22px + 1.315vw), 30px);
+  }
+
+  .search {
+    padding: clamp(2px, 0.5vw, 6px) clamp(10px, 1.5vw, 20px);
+  }
+}
+
+@media (min-width: 400px) and (max-width: 560px) {
+  .logo {
+    font-size: clamp(5px, calc(12.22px + 1.315vw), 25px);
+  }
+
+  .user a {
+    display: none;
+  }
+
+  .search {
+    padding: clamp(2px, 0.5vw, 6px) clamp(10px, 1.5vw, 20px);
+  }
+
+  .profile-button {
+    display: block;
+}
+}
