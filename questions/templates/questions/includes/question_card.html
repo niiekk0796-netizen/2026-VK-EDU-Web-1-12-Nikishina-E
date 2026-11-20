@@ -11,7 +11,7 @@
     {% endif %}
     <div class="post-meta">
       <a href="{% if not detail %}{{ question_url }}{% endif %}#answers"{% if detail %} class="visually-hidden"{% endif %}>answer ({{ question.answer_count }})</a>
-      <time class="visually-hidden" datetime="{{ question.created|date:'Y-m-d' }}">{{ question.created|date:"M j, Y" }}</time>
+      <time datetime="{{ question.created|date:'Y-m-d' }}">{{ question.created|date:"M j, Y" }}</time>
       {% include "questions/includes/tags.html" with tags=question.tags show_label=True only %}
     </div>
   </div>

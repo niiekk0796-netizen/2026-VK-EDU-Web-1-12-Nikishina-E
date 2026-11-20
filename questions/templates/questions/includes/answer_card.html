@@ -4,7 +4,7 @@
     <p>{{ answer.text }}</p>
     <div class="post-meta">
       <span class="visually-hidden">{{ answer.author }}</span>
-      <time class="visually-hidden" datetime="{{ answer.created|date:'Y-m-d' }}">{{ answer.created|date:"M j, Y" }}</time>
+      <time datetime="{{ answer.created|date:'Y-m-d' }}">{{ answer.created|date:"M j, Y" }}</time>
       <label class="accepted"><input type="checkbox" disabled{% if answer.accepted %} checked{% endif %}> Correct!</label>
     </div>
   </div>
