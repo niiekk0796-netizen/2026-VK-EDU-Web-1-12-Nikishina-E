@@ -1,5 +1,5 @@
-from .data import BEST_MEMBERS, POPULAR_TAGS
+from django.core.cache import cache
 
 
 def community(request):
-    return {"popular_tags": POPULAR_TAGS, "best_members": BEST_MEMBERS}
+    return cache.get("community", {"popular_tags": [], "best_members": []})

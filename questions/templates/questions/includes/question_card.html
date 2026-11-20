@@ -1,18 +1,12 @@
-{% url 'questions:question' question.id as question_url %}
 <article class="post-card{% if detail %} question-detail{% endif %}">
-  {% include "questions/includes/post_rail.html" with post=question only %}
+  {% include "questions/includes/post_rail.html" with post=question kind="question" %}
   <div class="post-body">
-    {% if detail %}
-      <h1>{{ question.title }}</h1>
-      <p class="post-text">{{ question.detail }}</p>
-    {% else %}
-      <h2><a class="post-title" href="{{ question_url }}">{{ question.title }}</a></h2>
-      <p class="post-text">{{ question.text }}</p>
-    {% endif %}
+    {% if detail %}<h1>{{ question.title }}</h1>{% else %}<h2><a class="post-title" href="{{ question.get_absolute_url }}">{{ question.title }}</a></h2>{% endif %}
+    <p class="post-text">{{ question.text }}</p>
     <div class="post-meta">
-      <a href="{% if not detail %}{{ question_url }}{% endif %}#answers"{% if detail %} class="visually-hidden"{% endif %}>answer ({{ question.answer_count }})</a>
-      <time datetime="{{ question.created|date:'Y-m-d' }}">{{ question.created|date:"M j, Y" }}</time>
-      {% include "questions/includes/tags.html" with tags=question.tags show_label=True only %}
+      <a href="{{ question.get_absolute_url }}#answers">answer ({{ question.answer_count }})</a>
+      <time datetime="{{ question.created|date:'c' }}">{{ question.created|date:"d.m.Y H:i" }}</time>
+      {% include "questions/includes/tags.html" with tags=question.tags.all show_label=True %}
     </div>
   </div>
 </article>

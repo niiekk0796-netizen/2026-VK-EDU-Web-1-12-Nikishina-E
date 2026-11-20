@@ -1,36 +1,20 @@
-from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_safe
 
-from .data import QUESTIONS, answers_for
+from .models import Question, Tag
 from .pagination import paginate
 
 
 def page_context(objects, request, per_page):
     page = paginate(objects, request, per_page)
-    return {
-        "page": page,
-        "page_numbers": page.paginator.get_elided_page_range(page.number, on_each_side=2, on_ends=1),
-    }
+    return {"page": page, "page_numbers": page.paginator.get_elided_page_range(page.number, on_each_side=2, on_ends=1)}
 
 
-def question_feed(request, template, *, tag=None, by_rating=False):
+def question_feed(request, template, tag=None, by_rating=False):
     query = request.GET.get("q", "").strip()[:100]
-    search = query.casefold()
-    results = [
-        question
-        for question in QUESTIONS.values()
-        if (tag is None or tag in question["tags"])
-        and (not search or search in question["title"].casefold() or search in question["text"].casefold())
-    ]
-    if by_rating:
-        results.sort(key=lambda question: (question["score"], question["created"]), reverse=True)
-    else:
-        results.sort(key=lambda question: question["created"], reverse=True)
-
-    context = page_context(results, request, per_page=20)
-    context.update(tag=tag, search_query=query)
-    return render(request, template, context)
+    posts = Question.objects.display(request.user).search(query)
+    posts = posts.tagged(tag) if tag else posts.best() if by_rating else posts.newest()
+    return render(request, template, {**page_context(posts, request, 20), "tag": tag, "search_query": query})
 
 
 @require_safe
@@ -45,17 +29,15 @@ def hot(request):
 
 @require_safe
 def tag(request, tag):
-    return question_feed(request, "questions/tag.html", tag=tag, by_rating=True)
+    topic = get_object_or_404(Tag, name=tag)
+    return question_feed(request, "questions/tag.html", tag=topic.name)
 
 
 @require_safe
 def question(request, question_id):
-    post = QUESTIONS.get(question_id)
-    if post is None:
-        raise Http404("Question not found.")
-
-    context = page_context(answers_for(post), request, per_page=2)
-    return render(request, "questions/question.html", {"question": post, **context})
+    post = get_object_or_404(Question.objects.display(request.user), pk=question_id)
+    answers = post.answers.display(request.user).ranked()
+    return render(request, "questions/question.html", {"question": post, **page_context(answers, request, 30)})
 
 
 @require_safe

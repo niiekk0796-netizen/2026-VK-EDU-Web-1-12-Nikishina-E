@@ -10,3 +10,7 @@ venv
 *.log
 media
 /static
+.env.*
+!.env.example
+.local-postgres
+.cache
