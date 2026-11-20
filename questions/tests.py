@@ -12,7 +12,7 @@ from django.db import connection
 
 from core.forms import SignupForm
 from .forms import AnswerForm
-from .models import Answer, AnswerLike, Question, QuestionLike, Tag
+from .models import Answer, Question, QuestionLike
 from .services import change_vote
 
 
@@ -125,4 +125,3 @@ class ConcurrentVoteTests(TransactionTestCase):
         post.refresh_from_db()
         self.assertEqual(post.score, 4)
         self.assertEqual(post.likes.count(), 4)
-
