@@ -37,15 +37,15 @@
       <form method="post" class="form-panel question-form" data-demo-form>
           <div class="form-row">
             <label for="field-title" class="form-label">Title</label>
-            <input class="form-control" id="field-title" name="title" type="text" maxlength="120" required placeholder="How to build a moon park ?" title="Up to 120 characters">
+            <div><input class="form-control" id="field-title" aria-describedby="field-title-help" name="title" type="text" maxlength="120" required placeholder="How to build a moon park ?" title="Up to 120 characters"><div class="form-help" id="field-title-help">До 120 символов.</div></div>
           </div>
           <div class="form-row">
             <label for="field-text" class="form-label">Text</label>
-            <textarea class="form-control" id="field-text" name="text" maxlength="5000" required rows="7" placeholder="Really, how ?&#10;Have no idea about it" title="Up to 5,000 characters"></textarea>
+            <div><textarea class="form-control" id="field-text" aria-describedby="field-text-help" name="text" maxlength="5000" required rows="7" placeholder="Really, how ?&#10;Have no idea about it" title="Up to 5,000 characters"></textarea><div class="form-help" id="field-text-help">До 5000 символов.</div></div>
           </div>
           <div class="form-row">
             <label for="field-tags" class="form-label">Tags</label>
-            <input class="form-control" id="field-tags" name="tags" type="text" maxlength="100" placeholder="moon, park, puzzle" title="Up to three comma-separated tags">
+            <div><input class="form-control" id="field-tags" aria-describedby="field-tags-help" name="tags" type="text" maxlength="100" placeholder="moon, park, puzzle" title="Up to three comma-separated tags"><div class="form-help" id="field-tags-help">До трёх тегов через запятую.</div></div>
           </div>
           <div class="form-actions">
             <button class="btn primary-button" type="submit">ASK!</button>

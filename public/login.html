@@ -38,11 +38,11 @@
           <p class="form-error" role="alert">Sorry, wrong password!</p>
           <div class="form-row">
             <label for="field-username" class="form-label">Login</label>
-            <input class="form-control" id="field-username" name="username" type="text" maxlength="40" autocomplete="username" required placeholder="Enter your login here">
+            <div><input class="form-control" id="field-username" aria-describedby="field-username-help" name="username" type="text" maxlength="40" autocomplete="username" required placeholder="Enter your login here"><div class="form-help" id="field-username-help">Логин, указанный при регистрации.</div></div>
           </div>
           <div class="form-row">
             <label for="field-password" class="form-label">Password</label>
-            <input class="form-control" id="field-password" name="password" type="password" maxlength="128" autocomplete="current-password" required>
+            <div><input class="form-control" id="field-password" aria-describedby="field-password-help" name="password" type="password" maxlength="128" autocomplete="current-password" required><div class="form-help" id="field-password-help">Не меньше 8 символов.</div></div>
           </div>
           <div class="form-actions">
             <button class="btn primary-button" type="submit">Log in!</button>
