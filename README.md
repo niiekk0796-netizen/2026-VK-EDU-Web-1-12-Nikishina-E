@@ -1,58 +1,62 @@
 # Message.Me
 
-Учебный сайт вопросов и ответов для курса VK Education. В ветке `hw-1` находится статическая вёрстка, которую можно открыть через `public/index.html`. Ветка `hw-2` использует Django и демонстрационные данные.
+Сайт вопросов и ответов на Django и PostgreSQL.
 
-## Где лежат файлы
+## Запуск на компьютере
 
-| Папка | Содержимое |
-| --- | --- |
-| `application/` | Настройки Django и корневые маршруты |
-| `core/templates/core/` | Общий шаблон, вход, регистрация и профиль |
-| `core/static/core/` | Общие стили, Bootstrap, изображения и скрипт форм |
-| `questions/templates/questions/` | Лента, теги, вопрос с ответами и форма нового вопроса |
-| `questions/static/questions/` | Скрипт голосования |
-| `static/` | Результат команды `python manage.py collectstatic` |
-| `media/` | Загружаемые файлы |
-
-## Локальный запуск
-
-Нужен Python 3.12 или новее. Выполните в корне проекта.
-
-**Windows (PowerShell)**
+Нужны Python 3.12+ и PostgreSQL 17. Создайте в PostgreSQL пользователя и базу для проекта.
 
 ```powershell
 py -3.12 -m venv .venv
-Copy-Item .env.example .env
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+Copy-Item .env.example .env.local
+```
+
+Заполните секретный ключ и параметры базы в `.env.local`.
+
+```powershell
+.\.venv\Scripts\python.exe manage.py migrate
+.\.venv\Scripts\python.exe manage.py createsuperuser
 .\.venv\Scripts\python.exe manage.py runserver
 ```
 
-**Linux и macOS**
+Откройте http://127.0.0.1:8000/. Админка доступна по адресу `/admin/`.
 
-```sh
-python3 -m venv .venv
-cp .env.example .env
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python manage.py runserver
+## Docker Compose
+
+```powershell
+Copy-Item .env.example .env.docker
+docker compose --env-file .env.docker up --build
+docker compose --env-file .env.docker exec web python manage.py createsuperuser
 ```
 
-## Запуск через Docker Compose
+Задайте в `.env.docker` свой ключ и пароль базы. Для контейнеров используются `DB_HOST=db` и `DB_PORT=5432`. Данные PostgreSQL и загруженные изображения сохраняются в томах.
 
-```sh
-docker compose up --build
+## Данные для проверки
+
+```powershell
+python manage.py fill_db 10001
+python manage.py refresh_community
 ```
 
-Откройте [Message.Me](http://localhost:8000/). Исходники подключаются из рабочей папки, а для `media/` используется отдельный том. Настройки локального запуска перечислены в `.env.example`.
+Команда добавляет ratio пользователей и тегов, ratio × 10 вопросов, ratio × 100 ответов и ratio × 200 оценок. Для короткой проверки можно использовать `fill_db 10`. Каждый запуск добавляет отдельный набор данных в одной транзакции. ratio должен быть не меньше 2, поскольку при одном пользователе недостаточно уникальных пар для 200 голосов. Сгенерированные пользователи имеют отключённый пароль.
+
+Списки в боковой колонке обновляются командой `refresh_community`. Её можно запускать раз в 30 минут через cron или планировщик Windows. Кеш хранится на диске и доступен разным процессам.
+
+## Страницы и файлы
 
 | Адрес | Страница |
 | --- | --- |
-| `/` | Новые вопросы и поиск |
-| `/hot/` | Популярные вопросы |
-| `/tag/django/` | Вопросы по тегу |
-| `/question/35/` | Вопрос и ответы |
-| `/ask/` | Создание вопроса |
-| `/login/` | Вход |
-| `/signup/` | Регистрация |
-| `/profile/` | Настройки профиля |
+| `/` | Новые вопросы, поиск по заголовку и тексту |
+| `/hot/` | Вопросы по рейтингу |
+| `/tag/django/` | Вопросы выбранного тега |
+| `/question/1/` | Вопрос и ответы |
+| `/ask/` | Новый вопрос |
+| `/login/`, `/signup/`, `/profile/` | Вход, регистрация и профиль |
 
-Параметр `page` переключает страницы списка или ответов. При некорректном значении открывается первая страница. Формы и голосование работают в режиме демонстрации.
+Вопросы выводятся по 20, ответы по 30. На пустой базе показываются сообщения об отсутствии записей. Для несуществующих вопросов и тегов возвращается 404.
+
+Настройки проекта лежат в `application/`. Модели пользователей, формы аккаунта и общие шаблоны находятся в `core/`, вопросы, ответы и голосование в `questions/`. У каждого приложения свои папки templates и static. `static/` заполняется командой `collectstatic`, загрузки хранятся в `media/`.
+
+При DEBUG=1 включена Django Debug Toolbar. Ветки `hw-1` и `hw-2` содержат предыдущие задания.
+

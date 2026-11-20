@@ -1,11 +1,11 @@
-<article class="post-card">
-  {% include "questions/includes/post_rail.html" with post=answer only %}
+<article class="post-card" id="answer-{{ answer.pk }}">
+  {% include "questions/includes/post_rail.html" with post=answer kind="answer" %}
   <div class="post-body">
     <p>{{ answer.text }}</p>
     <div class="post-meta">
-      <span class="visually-hidden">{{ answer.author }}</span>
-      <time class="visually-hidden" datetime="{{ answer.created|date:'Y-m-d' }}">{{ answer.created|date:"M j, Y" }}</time>
-      <label class="accepted"><input type="checkbox" disabled{% if answer.accepted %} checked{% endif %}> Correct!</label>
+      <span>{{ answer.author.profile }}</span>
+      <time datetime="{{ answer.created|date:'c' }}">{{ answer.created|date:"d.m.Y H:i" }}</time>
+      <label class="accepted"><input type="checkbox"{% if answer.accepted %} checked{% endif %}{% if user.pk != question.author_id %} disabled title="Отметить ответ может автор вопроса"{% endif %}> Correct!</label>
     </div>
   </div>
 </article>

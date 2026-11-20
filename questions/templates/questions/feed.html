@@ -8,9 +8,9 @@
 {% block content %}
   {% block heading %}{% endblock %}
   {% for question in page %}
-    {% include "questions/includes/question_card.html" with question=question only %}
+    {% include "questions/includes/question_card.html" with question=question %}
   {% empty %}
-    <p>No questions found.</p>
+    <p>Пока нет ни одного вопроса.</p>
   {% endfor %}
   {% include "questions/includes/pagination.html" %}
 {% endblock %}

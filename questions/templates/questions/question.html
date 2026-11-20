@@ -8,12 +8,12 @@
 {% block title %}{{ question.title }}{% endblock %}
 
 {% block content %}
-  {% include "questions/includes/question_card.html" with question=question detail=True only %}
+  {% include "questions/includes/question_card.html" with question=question detail=True %}
   <div id="answers">
     {% for answer in page %}
-      {% include "questions/includes/answer_card.html" with answer=answer only %}
+      {% include "questions/includes/answer_card.html" with answer=answer %}
     {% empty %}
-      <p>No answers yet.</p>
+      <p>Пока нет ни одного ответа к этому вопросу.</p>
     {% endfor %}
   </div>
   {% include "questions/includes/answer_form.html" %}

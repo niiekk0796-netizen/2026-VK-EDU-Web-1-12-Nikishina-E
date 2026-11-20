@@ -227,3 +227,9 @@ node_modules/
 # Django generated files
 /static/
 /media/
+
+.idea/
+.vscode/
+.env.*
+!.env.example
+.cache/
