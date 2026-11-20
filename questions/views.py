@@ -1,6 +1,11 @@
-from django.shortcuts import get_object_or_404, render
-from django.views.decorators.http import require_safe
+from urllib.parse import quote
+from django.urls import reverse
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.http import require_safe, require_http_methods
 
+from .forms import AnswerForm, QuestionForm
 from .models import Question, Tag
 from .pagination import paginate
 
@@ -33,13 +38,23 @@ def tag(request, tag):
     return question_feed(request, "questions/tag.html", tag=topic.name)
 
 
-@require_safe
+@require_http_methods(["GET", "POST"])
 def question(request, question_id):
     post = get_object_or_404(Question.objects.display(request.user), pk=question_id)
-    answers = post.answers.display(request.user).ranked()
-    return render(request, "questions/question.html", {"question": post, **page_context(answers, request, 30)})
+    if request.method == "POST" and not request.user.is_authenticated:
+        return redirect(f"{reverse('core:login')}?next={quote(request.path)}")
+    form = AnswerForm(request.POST if request.method == "POST" else None, author=request.user, question=post)
+    if request.method == "POST" and form.is_valid():
+        return redirect(form.save().get_absolute_url())
+    return render(request, "questions/question.html", {"question": post, "form": form, **page_context(post.answers.display(request.user).ranked(), request, 30)})
 
 
-@require_safe
+@login_required
+@require_http_methods(["GET", "POST"])
 def ask(request):
-    return render(request, "questions/ask.html")
+    form = QuestionForm(request.POST if request.method == "POST" else None, author=request.user)
+    if request.method == "POST" and form.is_valid():
+        post = form.save()
+        messages.success(request, "Вопрос добавлен.")
+        return redirect(post)
+    return render(request, "questions/ask.html", {"form": form})

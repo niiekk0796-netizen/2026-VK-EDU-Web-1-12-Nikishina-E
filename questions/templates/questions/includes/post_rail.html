@@ -1,6 +1,6 @@
 <div class="post-rail">
   <img class="avatar" src="{{ post.author.profile.avatar_url }}" alt="{{ post.author.profile }}" width="44" height="44">
-  <div class="votes" role="group" aria-label="Vote">
+  <div class="votes" role="group" aria-label="Vote" data-url="{% url 'questions:vote' kind post.pk %}">
     <button type="button" class="vote" data-vote="1" aria-pressed="{% if post.vote == 1 %}true{% else %}false{% endif %}" aria-label="Upvote"{% if not user.is_authenticated %} disabled title="Войдите, чтобы голосовать"{% endif %}>▴</button>
     <output class="vote-count" aria-label="Score">{{ post.score }}</output>
     <button type="button" class="vote" data-vote="-1" aria-pressed="{% if post.vote == -1 %}true{% else %}false{% endif %}" aria-label="Downvote"{% if not user.is_authenticated %} disabled title="Войдите, чтобы голосовать"{% endif %}>▾</button>

@@ -1,7 +1,9 @@
-<form method="post" class="form-panel answer-form" data-demo-form>
-    {% csrf_token %}
-    <label for="field-answer" class="visually-hidden">Your answer</label>
-    <textarea class="form-control" id="field-answer" name="answer" maxlength="5000" required rows="3" placeholder="Enter your answer here.."></textarea>
-    <button class="btn primary-button" type="submit">Answer</button>
-    {% include "core/includes/form_status.html" %}
-  </form>
+{% if user.is_authenticated %}
+<form method="post" class="form-panel answer-form">
+  {% csrf_token %}
+  {% include "core/includes/form_fields.html" %}
+  <button class="btn primary-button" type="submit">Answer</button>
+</form>
+{% else %}
+<p><a href="{% url 'core:login' %}?next={{ request.get_full_path|urlencode }}">Войдите, чтобы ответить.</a></p>
+{% endif %}

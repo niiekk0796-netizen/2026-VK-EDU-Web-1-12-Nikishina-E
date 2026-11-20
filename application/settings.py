@@ -70,3 +70,5 @@ CACHES = {"default": {
     "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
     "LOCATION": BASE_DIR / ".cache" / "community",
 }}
+SITE_URL = os.environ.get("SITE_URL", "http://127.0.0.1:8000")
+DEBUG_TOOLBAR_CONFIG = {"SHOW_COLLAPSED": True}
