@@ -1,0 +1,27 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Message.Me{% endblock %} · Message.Me</title>
+  <link rel="icon" href="{% static 'core/img/favicon.svg' %}" type="image/svg+xml">
+  <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'core/css/reset.css' %}">
+  <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'core/css/pages.css' %}">
+  <script src="{% static 'core/js/bootstrap.bundle.min.js' %}" defer></script>
+  <script src="{% static 'core/js/forms.js' %}" defer></script>
+  {% block scripts %}{% endblock %}
+</head>
+<body>
+  {% include "core/includes/header.html" %}
+  <div class="container content">
+    <main class="main" id="main">
+      {% block content %}{% endblock %}
+    </main>
+    {% include "core/includes/sidebar.html" %}
+  </div>
+  <footer class="container footer"></footer>
+</body>
+</html>

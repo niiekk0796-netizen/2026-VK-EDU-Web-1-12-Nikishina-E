@@ -1,0 +1,15 @@
+{% if page.has_other_pages %}
+  <nav aria-label="Pages">
+    <ul class="pagination">
+      {% for number in page_numbers %}
+        {% if number == page.paginator.ELLIPSIS %}
+          <li class="page-item disabled"><span class="page-link">{{ number }}</span></li>
+        {% elif page.number == number %}
+          <li class="page-item active"><span class="page-link" aria-current="page">{{ number }}</span></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="{% querystring page=number %}{{ anchor|default:'' }}">{{ number }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}

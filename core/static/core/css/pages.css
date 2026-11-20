@@ -38,7 +38,7 @@ h1 { font-size: clamp(1.5rem, 3vw, 1.85rem); margin: 0 0 14px; }
 
 .post-card {
   display: grid;
-  grid-template-columns: 52px minmax(0, 1fr);
+  grid-template-columns: max-content minmax(0, 1fr);
   gap: 14px;
   border: 1px solid #777;
   padding: 10px 12px;
@@ -134,13 +134,13 @@ h1 { font-size: clamp(1.5rem, 3vw, 1.85rem); margin: 0 0 14px; }
   .logo { font-size: 22px; }
   .user { gap: 6px; }
   .avatar.header-avatar { width: 30px; height: 30px; }
-  .post-card { grid-template-columns: 40px minmax(0, 1fr); gap: 10px; }
+  .post-card { grid-template-columns: max-content minmax(0, 1fr); gap: 10px; }
   .post-rail .avatar { width: 36px; height: 36px; }
   .form-row { grid-template-columns: minmax(0, 1fr); gap: 3px; }
   .form-actions { margin-left: 0; }
 }
 
-.votes { grid-template-columns: 26px 28px; grid-template-rows: repeat(2, 28px); }
+.votes { grid-template-columns: minmax(26px, max-content) 28px; grid-template-rows: repeat(2, 28px); }
 .vote { font-size: 1.3rem; line-height: 26px; }
 .form-help { color: #555; font-size: .85rem; margin-top: 4px; }
 .form-row > div { min-width: 0; }

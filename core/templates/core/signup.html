@@ -1,0 +1,39 @@
+{% extends "core/base.html" %}
+
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+  <h1>Registration</h1>
+  <form method="post" enctype="multipart/form-data" class="form-panel" data-demo-form>
+    {% csrf_token %}
+    <p class="form-error" role="alert">Sorry, this email address already registered!</p>
+    <div class="form-row">
+      <label for="field-username" class="form-label">Login</label>
+      <div><input class="form-control" id="field-username" aria-describedby="field-username-help" name="username" type="text" maxlength="40" autocomplete="username" required value="dr_pepper"><div class="form-help" id="field-username-help">Логин, указанный при регистрации.</div></div>
+    </div>
+    <div class="form-row">
+      <label for="field-email" class="form-label">Email</label>
+      <div><input class="form-control" aria-invalid="true" id="field-email" aria-describedby="field-email-help" name="email" type="email" maxlength="254" required value="dr.pepper@example.com" autocomplete="email"><div class="form-help" id="field-email-help">Введите действующий email.</div><p class="form-error">Этот email уже зарегистрирован.</p></div>
+    </div>
+    <div class="form-row">
+      <label for="field-nickname" class="form-label">NickName</label>
+      <div><input class="form-control" id="field-nickname" aria-describedby="field-nickname-help" name="nickname" type="text" maxlength="40" required value="Dr. Pepper" autocomplete="nickname"><div class="form-help" id="field-nickname-help">До 40 символов.</div></div>
+    </div>
+    <div class="form-row">
+      <label for="field-password" class="form-label">Password</label>
+      <div><input class="form-control" id="field-password" aria-describedby="field-password-help" name="password" type="password" maxlength="128" autocomplete="new-password" required minlength="8"><div class="form-help" id="field-password-help">Не меньше 8 символов.</div></div>
+    </div>
+    <div class="form-row">
+      <label for="field-confirm_password" class="form-label">Repeat password</label>
+      <div><input class="form-control" id="field-confirm_password" aria-describedby="field-confirm_password-help" name="confirm_password" type="password" maxlength="128" autocomplete="new-password" required minlength="8"><div class="form-help" id="field-confirm_password-help">Повторите пароль.</div></div>
+    </div>
+    <div class="form-row">
+      <label for="field-avatar" class="form-label">Upload avatar</label>
+      <div><input class="form-control" id="field-avatar" aria-describedby="field-avatar-help" name="avatar" type="file" accept="image/png,image/jpeg,image/webp"><div class="form-help" id="field-avatar-help">PNG, JPEG или WebP.</div></div>
+    </div>
+    <div class="form-actions">
+      <button class="btn primary-button" type="submit">Register!</button>
+      {% include "core/includes/form_status.html" %}
+    </div>
+  </form>
+{% endblock %}

@@ -223,3 +223,10 @@ __marimo__/
 .DS_Store
 *.sqlite3
 node_modules/
+
+# Django generated files
+/static/
+/media/
+
+.idea/
+.vscode/

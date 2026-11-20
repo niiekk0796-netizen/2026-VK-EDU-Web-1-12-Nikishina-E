@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Settings: Dr. Pepper{% endblock %}
+
+{% block content %}
+  <h1>Settings: Dr. Pepper</h1>
+  <form method="post" enctype="multipart/form-data" class="form-panel" data-demo-form>
+    {% csrf_token %}
+    <div class="form-row">
+      <label for="field-username" class="form-label">Login</label>
+      <div><input class="form-control" id="field-username" aria-describedby="field-username-help" name="username" type="text" maxlength="40" autocomplete="username" required value="dr_pepper"><div class="form-help" id="field-username-help">Логин, указанный при регистрации.</div></div>
+    </div>
+    <div class="form-row">
+      <label for="field-email" class="form-label">Email</label>
+      <div><input class="form-control" id="field-email" aria-describedby="field-email-help" name="email" type="email" maxlength="254" required value="dr.pepper@example.com" autocomplete="email"><div class="form-help" id="field-email-help">Введите действующий email.</div></div>
+    </div>
+    <div class="form-row">
+      <label for="field-nickname" class="form-label">NickName</label>
+      <div><input class="form-control" id="field-nickname" aria-describedby="field-nickname-help" name="nickname" type="text" maxlength="40" required value="Dr. Pepper" autocomplete="nickname"><div class="form-help" id="field-nickname-help">До 40 символов.</div></div>
+    </div>
+    <div class="form-row">
+      <label for="field-avatar" class="form-label">Upload avatar</label>
+      <div><img class="avatar avatar-preview" src="{% static 'core/img/profile.svg' %}" alt="" width="72" height="72"><div><input class="form-control" id="field-avatar" aria-describedby="field-avatar-help" name="avatar" type="file" accept="image/png,image/jpeg,image/webp"><div class="form-help" id="field-avatar-help">PNG, JPEG или WebP.</div></div></div>
+    </div>
+    <div class="form-actions">
+      <button class="btn primary-button" type="submit">Save</button>
+      {% include "core/includes/form_status.html" %}
+    </div>
+  </form>
+{% endblock %}
